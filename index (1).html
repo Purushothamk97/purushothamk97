@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Purushotham Krishnappa — Medical Doctor & Clinical Scientist</title>
+<meta name="description" content="Personal site of Purushotham Krishnappa — Medical doctor and Clinical Scientist working on EHR data and AI in healthcare." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Purushotham Krishnappa" />
+<meta property="og:description" content="Medical doctor and Clinical Scientist working on EHR data and AI in healthcare." />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://purushothamk97.github.io/" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!--
+  ANALYTICS — pick ONE and uncomment.
+  GoatCounter: https://www.goatcounter.com  (free, no cookie banner)
+  <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
+
+<style>
+  :root {
+    --accent: #0F766E;
+    --accent-soft: #0F766E14;
+    --bg: #FBFAF7;
+    --surface: #FFFFFF;
+    --ink: #111418;
+    --muted: #5C6370;
+    --line: #E8E4DC;
+    --shadow: 0 1px 2px rgba(17,20,24,.04), 0 8px 24px rgba(17,20,24,.04);
+    --radius: 14px;
+    --max-w: 880px;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --star-color: 17, 20, 24;
+  }
+
+  [data-theme="dark"] {
+    --bg: #08090E;
+    --surface: #12151B;
+    --ink: #ECEFF4;
+    --muted: #9AA4B2;
+    --line: #1E232C;
+    --accent: #2DD4BF;
+    --accent-soft: #2DD4BF1F;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    --star-color: 236, 239, 244;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s ease, color .3s ease;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
+  a:hover { opacity: .75; }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Starfield (dark mode background canvas) ---------- */
+  .starfield {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 1;
+    display: none;
+  }
+  [data-theme="dark"] .starfield { display: block; }
+
+  /* ---------- Aurora (light mode background) ---------- */
+  .aurora {
+    position: fixed; inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+  [data-theme="dark"] .aurora { display: none; }
+  .aurora-blob {
+    position: absolute;
+    width: 55vw; height: 55vw;
+    max-width: 700px; max-height: 700px;
+    border-radius: 50%;
+    filter: blur(90px);
+    will-change: transform;
+    animation: blobFloat 24s ease-in-out infinite;
+  }
+  .blob-1 { background: #5eead4; top: -15%; left: -10%; opacity: .35; }
+  .blob-2 { background: #fcd34d; top: 25%; right: -20%; opacity: .28; animation-delay: -8s; animation-duration: 28s; }
+  .blob-3 { background: #fda4af; bottom: -20%; left: 25%; opacity: .22; animation-delay: -16s; animation-duration: 32s; }
+  @keyframes blobFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(80px, -60px) scale(1.1); }
+    66% { transform: translate(-40px, 70px) scale(0.95); }
+  }
+
+  /* ---------- Scroll progress ---------- */
+  .progress {
+    position: fixed; top: 0; left: 0;
+    height: 2px; width: 0%;
+    background: var(--accent);
+    z-index: 100;
+    transition: width .1s linear;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 24px;
+    max-width: var(--max-w); margin: 0 auto;
+  }
+  .brand { font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em; font-size: 1.05rem; }
+  .brand span { color: var(--accent); }
+  .nav { display: flex; gap: 22px; align-items: center; }
+  .nav a {
+    color: var(--muted);
+    font-size: .92rem;
+    font-weight: 500;
+    position: relative;
+  }
+  .nav a:hover, .nav a.active { color: var(--ink); opacity: 1; }
+  .nav a.active::after {
+    content: ''; position: absolute;
+    bottom: -18px; left: 0; right: 0;
+    height: 2px; background: var(--accent);
+  }
+  .icon-btn {
+    background: none; border: 1px solid var(--line);
+    color: var(--ink); cursor: pointer;
+    width: 32px; height: 32px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px; font-family: inherit;
+    transition: background .2s, border-color .2s;
+  }
+  .icon-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+  .cmdk-trigger { width: auto; padding: 0 10px; gap: 6px; color: var(--muted); font-size: .85rem; }
+  .cmdk-trigger kbd {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 4px; padding: 1px 5px; font-size: 10px;
+  }
+
+  /* ---------- Hero with cursor spotlight ---------- */
+  .hero {
+    padding: 80px 0 56px;
+    position: relative;
+    isolation: isolate;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    z-index: -1;
+    background: radial-gradient(
+      350px circle at var(--mx, 50%) var(--my, 50%),
+      var(--accent-soft),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity .4s;
+    pointer-events: none;
+  }
+  .hero:hover::before { opacity: 1; }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 40px;
+    align-items: center;
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    margin-bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); }
+    70% { box-shadow: 0 0 0 8px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .tagline {
+    color: var(--muted);
+    font-size: 1.15rem;
+    max-width: 52ch;
+    margin: 0 0 28px;
+  }
+
+  /* ---------- Astronomy avatar ---------- */
+  .avatar-wrap {
+    width: 180px; height: 180px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    animation: float 7s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .avatar-wrap svg {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.08);
+    overflow: visible;
+  }
+  /*
+    To use your own photo instead of the SVG:
+    replace the entire <svg class="planet"> ... </svg> with:
+    <img src="your-photo.jpg" alt="Purushotham Krishnappa" class="avatar-photo" />
+    and uncomment the .avatar-photo block below.
+  */
+  /*
+  .avatar-photo {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+  }
+  */
+  .planet-ring { transform-origin: center; animation: spin 60s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .socials {
+    display: flex; gap: 14px; margin-top: 4px; align-items: center;
+    flex-wrap: wrap;
+  }
+  .socials a, .socials button {
+    width: 38px; height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--ink);
+    background: none;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .socials a:hover, .socials button:hover {
+    background: var(--accent); border-color: var(--accent); color: white;
+    opacity: 1; transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--accent-soft);
+  }
+  .socials svg { width: 18px; height: 18px; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 56px 0; border-top: 1px solid var(--line); position: relative; }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.6rem;
+    letter-spacing: -0.015em;
+    margin: 0 0 28px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2::before {
+    content: ''; width: 24px; height: 2px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .about p { font-size: 1.05rem; color: var(--ink); max-width: 64ch; }
+  .about p + p { margin-top: 14px; }
+
+  /* ---------- Experience ---------- */
+  .filter-bar {
+    display: none;
+    align-items: center; gap: 10px;
+    margin-bottom: 18px;
+    padding: 10px 14px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    font-size: .9rem;
+  }
+  .filter-bar.active { display: flex; }
+  .filter-bar strong { color: var(--accent); }
+  .filter-bar button {
+    background: none; border: none;
+    color: var(--muted); cursor: pointer;
+    font-family: inherit; font-size: inherit;
+    margin-left: auto; text-decoration: underline;
+  }
+
+  .role {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: border-color .2s, opacity .3s, box-shadow .3s, transform .15s ease-out;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  .role::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      400px circle at var(--rx, 50%) var(--ry, 50%),
+      var(--accent-soft),
+      transparent 50%
+    );
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .role:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); box-shadow: var(--shadow); }
+  .role:hover::before { opacity: 1; }
+  .role.dimmed { opacity: 0.35; }
+  .role-summary {
+    width: 100%;
+    text-align: left;
+    background: none; border: none;
+    cursor: pointer;
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    font-family: inherit; color: inherit;
+    position: relative;
+  }
+  .role-meta { display: flex; flex-direction: column; gap: 4px; }
+  .role-title { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; }
+  .role-company { color: var(--muted); font-size: .95rem; }
+  .role-company strong { color: var(--accent); font-weight: 600; }
+  .role-company a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dashed color-mix(in srgb, var(--accent) 50%, transparent);
+    transition: border-color .2s, opacity .2s;
+  }
+  .role-company a:hover { border-bottom-color: var(--accent); opacity: 1; }
+  .role-company a::after {
+    content: '↗';
+    font-size: .7em;
+    margin-left: 3px;
+    opacity: .6;
+    display: inline-block;
+    transform: translateY(-1px);
+  }
+  .role-dates {
+    color: var(--muted);
+    font-size: .85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .chevron { width: 18px; height: 18px; transition: transform .25s ease; color: var(--muted); }
+  .role[open] .chevron { transform: rotate(180deg); color: var(--accent); }
+  .role-detail {
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--line);
+    margin-top: -1px;
+  }
+  .role-detail p:first-child { margin-top: 18px; }
+  .role-detail ul { margin: 12px 0 0; padding-left: 18px; }
+  .role-detail li { margin-bottom: 8px; color: var(--ink); }
+  .role-detail li::marker { color: var(--accent); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: .78rem; font-weight: 500;
+    padding: 4px 10px; border-radius: 100px;
+  }
+
+  /* ---------- Education ---------- */
+  .edu {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .edu:last-child { border-bottom: none; }
+  .edu-school { font-weight: 600; }
+  .edu-degree { color: var(--muted); font-size: .95rem; }
+  .edu-dates { color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+
+  /* ---------- Skills ---------- */
+  .skill-group { margin-bottom: 22px; }
+  .skill-group h3 {
+    font-family: var(--sans);
+    font-size: .82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-list .tag {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 6px 12px;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .skill-list .tag:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .skill-list .tag.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .skill-hint { color: var(--muted); font-size: .85rem; margin: -16px 0 22px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Command palette ---------- */
+  .cmdk-overlay {
+    position: fixed; inset: 0;
+    background: rgba(8,9,14,.55);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: none;
+    align-items: flex-start; justify-content: center;
+    padding-top: 12vh;
+  }
+  .cmdk-overlay.open { display: flex; }
+  .cmdk {
+    width: min(560px, 92vw);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    overflow: hidden;
+  }
+  .cmdk-input {
+    width: 100%; border: none;
+    border-bottom: 1px solid var(--line);
+    background: transparent; color: var(--ink);
+    padding: 18px 20px;
+    font-size: 1rem; font-family: inherit;
+    outline: none;
+  }
+  .cmdk-list { max-height: 320px; overflow-y: auto; padding: 8px; }
+  .cmdk-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 8px;
+    cursor: pointer; color: var(--ink); font-size: .95rem;
+  }
+  .cmdk-item:hover, .cmdk-item.selected {
+    background: var(--accent-soft); color: var(--accent);
+  }
+  .cmdk-item .icon { width: 18px; height: 18px; opacity: .7; }
+  .cmdk-empty { padding: 20px; color: var(--muted); text-align: center; font-size: .9rem; }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink); color: var(--bg);
+    padding: 10px 18px; border-radius: 10px;
+    font-size: .9rem; box-shadow: var(--shadow);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s, transform .25s;
+    z-index: 300;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .hero { padding: 56px 0 32px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .avatar-wrap { width: 120px; height: 120px; order: -1; }
+    .nav a:not(.icon-btn) { display: none; }
+    .cmdk-trigger { display: none; }
+    section { padding: 40px 0; }
+    .role-summary { grid-template-columns: 1fr; }
+    .role-dates { font-size: .8rem; }
+    .edu { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
+    .starfield { display: none; }
+    .aurora-blob { animation: none; }
+    .avatar-wrap { animation: none; }
+    .planet-ring { animation: none; }
+  }
+
+  /* ---------- Print / PDF resume ---------- */
+  @media print {
+    :root { --bg: white; --ink: black; --muted: #444; --line: #ccc; --accent: black; --surface: white; }
+    .topbar, .progress, .socials, .cmdk-overlay, .toast, .starfield, .aurora, .avatar-wrap, footer { display: none !important; }
+    body, html { background: white !important; color: black !important; }
+    .hero { padding: 0 0 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2rem; margin-bottom: 8px; }
+    .tagline { font-size: 1rem; }
+    section { padding: 18px 0; page-break-inside: avoid; border-top: 1px solid #ccc; }
+    h2 { font-size: 1.2rem; margin-bottom: 14px; }
+    .role { border: none; box-shadow: none; margin-bottom: 8px; page-break-inside: avoid; background: white !important; }
+    .role-summary { padding: 6px 0; }
+    .role-detail { display: block !important; padding: 0; border-top: none; }
+    .chevron { display: none; }
+    .tag { background: none !important; border: 1px solid #ccc !important; color: #333 !important; }
+    a { color: black; text-decoration: none; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Animated starfield (dark mode) -->
+<canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+
+<!-- Aurora gradient blobs (light mode) -->
+<div class="aurora" aria-hidden="true">
+  <div class="aurora-blob blob-1"></div>
+  <div class="aurora-blob blob-2"></div>
+  <div class="aurora-blob blob-3"></div>
+</div>
+
+<!-- Scroll progress -->
+<div class="progress" id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Purushotham<span>.</span></div>
+    <nav class="nav">
+      <a href="#about" data-nav>About</a>
+      <a href="#experience" data-nav>Experience</a>
+      <a href="#education" data-nav>Education</a>
+      <a href="#skills" data-nav>Skills</a>
+      <button class="icon-btn cmdk-trigger" id="cmdkTrigger" aria-label="Open command palette">
+        <span>Search</span> <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero" style="border-top: none;">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span><span id="greeting">Welcome</span></div>
+        <h1>Hi, I'm Purushotham</h1>
+        <p class="tagline">
+          Medical doctor with experience in emergency and outpatient clinical settings. Currently a Clinical Scientist advancing healthcare through EHR data and AI.
+        </p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/purushotham-k/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.67H5.67v8.67h2.67zM7 8.5a1.55 1.55 0 100-3.1 1.55 1.55 0 000 3.1zm11.34 9.84v-4.74c0-2.54-1.36-3.72-3.17-3.72a2.74 2.74 0 00-2.49 1.37V9.67h-2.67c.04.75 0 8.67 0 8.67h2.67v-4.84a1.83 1.83 0 01.09-.65 1.46 1.46 0 011.37-.97c.96 0 1.34.73 1.34 1.81v4.65h2.67z"/></svg>
+          </a>
+          <a href="mailto:purushothamkrishnappa97@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <button id="copyEmail" aria-label="Copy email address" title="Copy email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+          <a href="https://github.com/Purushothamk97" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.64.71 1.03 1.61 1.03 2.71 0 3.84-2.34 4.69-4.57 4.94.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+          </a>
+          <a href="https://x.com/Purushothamk97" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!--
+        ASTRONOMY-THEMED PLACEHOLDER AVATAR
+        Inline SVG: planet with rotating rings + nebula background + twinkling stars.
+        To swap for a real photo, replace the entire <svg class="planet"> ... </svg>
+        with: <img src="your-photo.jpg" alt="Purushotham K" class="avatar-photo" />
+        and uncomment the .avatar-photo CSS block above.
+      -->
+      <div class="avatar-wrap" aria-hidden="true">
+        <svg class="planet" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="bgGrad" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="#3730a3"/>
+              <stop offset="40%" stop-color="#1e1b4b"/>
+              <stop offset="100%" stop-color="#0a0a1f"/>
+            </radialGradient>
+            <radialGradient id="planetGrad" cx="38%" cy="32%" r="70%">
+              <stop offset="0%" stop-color="#fef3c7"/>
+              <stop offset="20%" stop-color="#fbbf24"/>
+              <stop offset="55%" stop-color="#b45309"/>
+              <stop offset="100%" stop-color="#3b1106"/>
+            </radialGradient>
+            <radialGradient id="planetAtmo" cx="50%" cy="50%" r="60%">
+              <stop offset="80%" stop-color="rgba(251,191,36,0)"/>
+              <stop offset="100%" stop-color="rgba(251,191,36,.45)"/>
+            </radialGradient>
+            <linearGradient id="ringGrad" x1="0%" x2="100%">
+              <stop offset="0%" stop-color="#fde68a" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#fde68a" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#fde68a" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="planetClip"><circle cx="100" cy="100" r="100"/></clipPath>
+          </defs>
+
+          <!-- Nebula background -->
+          <g clip-path="url(#planetClip)">
+            <circle cx="100" cy="100" r="100" fill="url(#bgGrad)"/>
+            <!-- Nebula wisps -->
+            <ellipse cx="60" cy="60" rx="50" ry="20" fill="#7c3aed" opacity=".25" transform="rotate(-30 60 60)"/>
+            <ellipse cx="150" cy="140" rx="40" ry="18" fill="#db2777" opacity=".2" transform="rotate(20 150 140)"/>
+
+            <!-- Stars -->
+            <g fill="white">
+              <circle cx="35" cy="45" r="1">
+                <animate attributeName="opacity" values=".9;.3;.9" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="165" cy="55" r=".8" opacity=".7">
+                <animate attributeName="opacity" values=".7;1;.7" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="170" cy="135" r="1.2" opacity=".9"/>
+              <circle cx="40" cy="165" r=".7" opacity=".6">
+                <animate attributeName="opacity" values=".6;.95;.6" dur="4s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="155" cy="170" r=".9" opacity=".8"/>
+              <circle cx="20" cy="110" r=".5" opacity=".5"/>
+              <circle cx="55" cy="25" r=".6" opacity=".7">
+                <animate attributeName="opacity" values=".4;.9;.4" dur="3.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="180" cy="85" r=".5" opacity=".6"/>
+              <circle cx="125" cy="35" r=".7" opacity=".75"/>
+              <circle cx="80" cy="180" r=".6" opacity=".7"/>
+            </g>
+
+            <!-- Planet system -->
+            <g transform="translate(100,108)">
+              <!-- Back half of ring (rotates) -->
+              <g class="planet-ring">
+                <ellipse cx="0" cy="0" rx="68" ry="10" fill="none" stroke="url(#ringGrad)" stroke-width="2.5" opacity=".7"/>
+                <ellipse cx="0" cy="0" rx="58" ry="8.5" fill="none" stroke="#fde68a" stroke-width="1" opacity=".35"/>
+              </g>
+
+              <!-- Planet sphere -->
+              <circle cx="0" cy="0" r="36" fill="url(#planetGrad)"/>
+              <!-- Atmospheric rim -->
+              <circle cx="0" cy="0" r="36" fill="url(#planetAtmo)"/>
+              <!-- Surface highlight -->
+              <ellipse cx="-11" cy="-13" rx="13" ry="6" fill="white" opacity=".18"/>
+              <!-- Surface bands -->
+              <ellipse cx="0" cy="-8" rx="32" ry="2" fill="#92400e" opacity=".3"/>
+              <ellipse cx="0" cy="6" rx="34" ry="2.5" fill="#7c2d12" opacity=".35"/>
+              <ellipse cx="0" cy="18" rx="28" ry="2" fill="#92400e" opacity=".25"/>
+
+              <!-- Front half of ring (covers planet, rotates with back) -->
+              <g class="planet-ring">
+                <path d="M -68,0 A 68 10 0 0 0 68 0" fill="none" stroke="url(#ringGrad)" stroke-width="2.5" opacity=".95"/>
+                <path d="M -58,0 A 58 8.5 0 0 0 58 0" fill="none" stroke="#fde68a" stroke-width="1.5" opacity=".7"/>
+              </g>
+
+              <!-- Tiny moon -->
+              <circle cx="-78" cy="-25" r="3" fill="#e5e7eb">
+                <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="20s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="about reveal">
+    <h2>About</h2>
+    <p>I am a Medical Doctor (M.B.B.S.) with extensive experience in emergency and outpatient clinical settings. Currently working as a Clinical Scientist at Nference labs, I focus on crunching Electronic Health Records using tools like Python and R to obtain critical insights that improve patient care.</p>
+    <p>I am deeply interested in the applications of Artificial Intelligence in medicine, specifically Machine Learning. Outside of work, I am passionate about astrophysics, aeronautics, sports like cricket and swimming, and reading sci-fi and self-improvement books.</p>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="reveal">
+    <h2>Experience</h2>
+
+    <div class="filter-bar" id="filterBar">
+      Filtered by <strong id="filterLabel"></strong>
+      <button id="clearFilter">Clear filter</button>
+    </div>
+
+    <!--
+      Tip: to make the company name a clickable link to its website,
+      wrap the company name in <a href="..." target="_blank" rel="noopener">.
+      Example shown below with nference. Standard practice — adds polish and is genuinely useful.
+    -->
+    <details class="role" data-tags="data ml healthcare research">
+      <summary class="role-summary">
+        <div class="role-meta">
+          <div class="role-title">Clinical Scientist</div>
+          <div class="role-company"><strong><a href="https://nference.ai" target="_blank" rel="noopener">Nference labs</a></strong> · Bengaluru, India</div>
+        </div>
+        <div class="role-dates">
+          04/2024–Present
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </summary>
+      <div class="role-detail">
+        <p>Leading the analytical aspects of crunching EHR data to obtain clinical insights by generating visualizations and survival metrics.</p>
+        <ul>
+          <li>Headed the analysis of Electronic Health Records using tools such as Python and R Studio.</li>
+          <li>Collaborated with scientists and physicians, leading to multiple publications (1 manuscript, 2 ASCO posters, 2 abstracts).</li>
+          <li>Executed multiple projects with major pharma companies, enabling the generation of novel insights regarding disease burden and patient care journey.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">data</span>
+          <span class="tag">healthcare</span>
+          <span class="tag">ml</span>
+          <span class="tag">research</span>
+        </div>
+      </div>
+    </details>
+
+    <details class="role" data-tags="data healthcare research">
+      <summary class="role-summary">
+        <div class="role-meta">
+          <div class="role-title">Research Clinical Doctor Junior</div>
+          <div class="role-company"><strong><a href="https://nference.ai" target="_blank" rel="noopener">Nference labs</a></strong> · Bengaluru, India</div>
+        </div>
+        <div class="role-dates">
+          02/2023–04/2024
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </summary>
+      <div class="role-detail">
+        <p>Generated critical insights from electronic health records to aid in the improvement of patient care.</p>
+        <ul>
+          <li>Created and implemented pipelines to extract survival outcomes from unstructured physician notes.</li>
+          <li>Collaborated with other scientists to understand 'Real world progression free survival' among cancer patients.</li>
+          <li>Work led to an academic presentation at ASCO.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">data</span>
+          <span class="tag">healthcare</span>
+          <span class="tag">research</span>
+        </div>
+      </div>
+    </details>
+
+    <details class="role" data-tags="medicine healthcare">
+      <summary class="role-summary">
+        <div class="role-meta">
+          <div class="role-title">Medical Officer</div>
+          <div class="role-company"><strong>General Hospital Jayanagar</strong> · Bangalore, India</div>
+        </div>
+        <div class="role-dates">
+          02/2022–02/2023
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </summary>
+      <div class="role-detail">
+        <p>Managed outpatient departments of various specialties, as well as the emergency room and Intensive Care Unit.</p>
+        <ul>
+          <li>Managed Outpatient departments (OPD) of various specialties and provided patient care.</li>
+          <li>Performed minor surgeries like ear lobe repair, keloid excision and wound care.</li>
+          <li>Managed emergency room operations and patients admitted to the Intensive Care Unit (ICU).</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">medicine</span>
+          <span class="tag">healthcare</span>
+        </div>
+      </div>
+    </details>
+
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section id="education" class="reveal">
+    <h2>Education</h2>
+
+    <div class="edu">
+      <div>
+        <div class="edu-school">Bangalore Medical College and Research Institute</div>
+        <div class="edu-degree">Bachelor of Medicine and Surgery (M.B.B.S.)</div>
+      </div>
+      <div class="edu-dates">2015–2021</div>
+    </div>
+
+    <div class="edu">
+      <div>
+        <div class="edu-school">Vidya Mandir Pre University College</div>
+        <div class="edu-degree">Pre-University (11, 12)</div>
+      </div>
+      <div class="edu-dates">2013–2015</div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="reveal">
+    <h2>Skills &amp; Expertise</h2>
+    <p class="skill-hint">Click any tag to filter the experience above.</p>
+
+    <div class="skill-group">
+      <h3>Domain</h3>
+      <div class="skill-list">
+        <span class="tag" data-filter="healthcare">Healthcare</span>
+        <span class="tag" data-filter="medicine">Medicine</span>
+        <span class="tag" data-filter="ml">Machine Learning</span>
+        <span class="tag" data-filter="research">Clinical Research</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Technical</h3>
+      <div class="skill-list">
+        <span class="tag" data-filter="data">Data Analysis</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">R</span>
+        <span class="tag">Jupyter</span>
+        <span class="tag">Git</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <div class="skill-list">
+        <span class="tag">English (Full Professional)</span>
+        <span class="tag">Hindi (Professional Working)</span>
+        <span class="tag">Kannada (Native/Bilingual)</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Purushotham Krishnappa. Press <kbd style="font-family:inherit;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:11px;">⌘K</kbd> for quick nav.</div>
+    <div><a href="mailto:purushothamkrishnappa97@gmail.com">Get in touch →</a></div>
+  </div>
+</footer>
+
+<!-- Command palette -->
+<div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true">
+  <div class="cmdk" role="combobox">
+    <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Type a command or search…" autocomplete="off" />
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Year ----------
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Theme ----------
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved) root.setAttribute('data-theme', saved);
+  else if (prefersDark) root.setAttribute('data-theme', 'dark');
+  themeToggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // ---------- Time-based greeting ----------
+  (() => {
+    const h = new Date().getHours();
+    let g = 'Welcome';
+    if (h < 5) g = 'Up late';
+    else if (h < 12) g = 'Good morning';
+    else if (h < 17) g = 'Good afternoon';
+    else g = 'Good evening';
+    document.getElementById('greeting').textContent = g;
+  })();
+
+  // ---------- Reveal-on-scroll ----------
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---------- Scroll progress ----------
+  const progress = document.getElementById('progress');
+  const updateProgress = () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    progress.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  };
+  document.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // ---------- Active nav (scroll spy) ----------
+  const navLinks = document.querySelectorAll('.nav a[data-nav]');
+  const sections = ['about', 'experience', 'education', 'skills'].map(id => document.getElementById(id));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => s && spy.observe(s));
+
+  // ---------- Copy email + toast ----------
+  const toast = document.getElementById('toast');
+  const showToast = (msg) => {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => toast.classList.remove('show'), 1800);
+  };
+  document.getElementById('copyEmail').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('purushothamkrishnappa97@gmail.com');
+      showToast('Email copied to clipboard');
+    } catch {
+      showToast('Could not copy — try right-click the mail icon');
+    }
+  });
+
+  // ---------- Filter experience by tag ----------
+  const filterBar = document.getElementById('filterBar');
+  const filterLabel = document.getElementById('filterLabel');
+  const roles = document.querySelectorAll('.role');
+  const filterTags = document.querySelectorAll('.skill-list .tag[data-filter]');
+  const applyFilter = (tag) => {
+    if (!tag) {
+      roles.forEach(r => r.classList.remove('dimmed'));
+      filterBar.classList.remove('active');
+      filterTags.forEach(t => t.classList.remove('active'));
+      return;
+    }
+    roles.forEach(r => {
+      const tags = (r.dataset.tags || '').split(/\s+/);
+      r.classList.toggle('dimmed', !tags.includes(tag));
+    });
+    filterLabel.textContent = tag;
+    filterBar.classList.add('active');
+    filterTags.forEach(t => t.classList.toggle('active', t.dataset.filter === tag));
+    document.getElementById('experience').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  filterTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+      const isActive = tag.classList.contains('active');
+      applyFilter(isActive ? null : tag.dataset.filter);
+    });
+  });
+  document.getElementById('clearFilter').addEventListener('click', () => applyFilter(null));
+
+  // ---------- Hero cursor spotlight ----------
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    hero.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+    hero.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+  });
+
+  // ---------- 3D tilt on role cards ----------
+  if (!reduceMotion) {
+    document.querySelectorAll('.role').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        const rx = (y - 0.5) * -4;
+        const ry = (x - 0.5) * 4;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        card.style.setProperty('--rx', x * 100 + '%');
+        card.style.setProperty('--ry', y * 100 + '%');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // ---------- Animated starfield + shooting stars (canvas, dark mode only) ----------
+  if (!reduceMotion) {
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let shooters = [];
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w, h;
+
+    const resize = () => {
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+      const count = Math.floor((w * h) / 9000);
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.2 + 0.2,
+        a: Math.random() * 0.6 + 0.2,
+        twinkle: Math.random() * 0.02 + 0.005,
+        phase: Math.random() * Math.PI * 2,
+        vy: (Math.random() - 0.5) * 0.05,
+      }));
+    };
+
+    const spawnShooter = () => {
+      // Start near top-left quadrant, fly down-right at ~30°
+      const angle = (Math.PI / 6) + (Math.random() - 0.5) * 0.3;
+      shooters.push({
+        x: Math.random() * w * 0.6,
+        y: Math.random() * h * 0.4,
+        vx: Math.cos(angle) * (10 + Math.random() * 6),
+        vy: Math.sin(angle) * (10 + Math.random() * 6),
+        len: 90 + Math.random() * 80,
+        life: 1,
+      });
+    };
+
+    let raf;
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+      const color = getComputedStyle(root).getPropertyValue('--star-color').trim();
+
+      // Draw twinkling stars
+      stars.forEach(s => {
+        s.phase += s.twinkle;
+        s.y += s.vy;
+        if (s.y < 0) s.y = h; if (s.y > h) s.y = 0;
+        const alpha = s.a * (0.6 + 0.4 * Math.sin(s.phase));
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${color}, ${alpha.toFixed(3)})`;
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Occasionally spawn a shooting star (only meaningful in dark mode — canvas hidden in light)
+      if (Math.random() < 0.004 && shooters.length < 3) spawnShooter();
+
+      // Draw + step shooting stars
+      shooters.forEach(s => {
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life -= 0.012;
+        const tailX = s.x - (s.vx / Math.hypot(s.vx, s.vy)) * s.len;
+        const tailY = s.y - (s.vy / Math.hypot(s.vx, s.vy)) * s.len;
+        const grad = ctx.createLinearGradient(s.x, s.y, tailX, tailY);
+        grad.addColorStop(0, `rgba(${color}, ${Math.max(0, s.life).toFixed(2)})`);
+        grad.addColorStop(1, `rgba(${color}, 0)`);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.stroke();
+        // Bright head
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${color}, ${Math.max(0, s.life).toFixed(2)})`;
+        ctx.arc(s.x, s.y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      shooters = shooters.filter(s => s.life > 0 && s.x < w + 50 && s.y < h + 50);
+
+      raf = requestAnimationFrame(draw);
+    };
+
+    resize();
+    draw();
+    window.addEventListener('resize', () => { cancelAnimationFrame(raf); resize(); draw(); });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(raf);
+      else { cancelAnimationFrame(raf); draw(); }
+    });
+  }
+
+  // ---------- Command palette ----------
+  const overlay = document.getElementById('cmdkOverlay');
+  const input = document.getElementById('cmdkInput');
+  const list = document.getElementById('cmdkList');
+  let selectedIdx = 0;
+
+  const commands = [
+    { label: 'Go to About',         icon: '◐', action: () => location.hash = '#about' },
+    { label: 'Go to Experience',    icon: '◑', action: () => location.hash = '#experience' },
+    { label: 'Go to Education',     icon: '◒', action: () => location.hash = '#education' },
+    { label: 'Go to Skills',        icon: '◓', action: () => location.hash = '#skills' },
+    { label: 'Copy email',          icon: '✉', action: () => { navigator.clipboard.writeText('purushothamkrishnappa97@gmail.com'); showToast('Email copied to clipboard'); } },
+    { label: 'Open LinkedIn',       icon: '↗', action: () => window.open('https://www.linkedin.com/in/purushotham-k/', '_blank') },
+    { label: 'Toggle dark mode',    icon: '☾', action: () => themeToggle.click() },
+    { label: 'Print / Save as PDF', icon: '⎙', action: () => window.print() },
+    { label: 'Clear filter',        icon: '✕', action: () => applyFilter(null) },
+  ];
+
+  const renderList = (q = '') => {
+    const filtered = commands.filter(c => c.label.toLowerCase().includes(q.toLowerCase()));
+    if (filtered.length === 0) { list.innerHTML = '<div class="cmdk-empty">No matches</div>'; return; }
+    list.innerHTML = filtered.map((c, i) => `
+      <div class="cmdk-item ${i === selectedIdx ? 'selected' : ''}" data-i="${commands.indexOf(c)}">
+        <span class="icon">${c.icon}</span><span>${c.label}</span>
+      </div>`).join('');
+    list.querySelectorAll('.cmdk-item').forEach(el => {
+      el.addEventListener('click', () => { commands[+el.dataset.i].action(); closeCmdk(); });
+    });
+  };
+  const openCmdk = () => {
+    overlay.classList.add('open'); input.value = ''; selectedIdx = 0; renderList();
+    setTimeout(() => input.focus(), 30);
+  };
+  const closeCmdk = () => overlay.classList.remove('open');
+  document.getElementById('cmdkTrigger').addEventListener('click', openCmdk);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeCmdk(); });
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      overlay.classList.contains('open') ? closeCmdk() : openCmdk();
+    }
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeCmdk();
+    if (overlay.classList.contains('open')) {
+      const items = list.querySelectorAll('.cmdk-item');
+      if (e.key === 'ArrowDown') { e.preventDefault(); selectedIdx = Math.min(items.length - 1, selectedIdx + 1); renderList(input.value); }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); selectedIdx = Math.max(0, selectedIdx - 1); renderList(input.value); }
+      if (e.key === 'Enter') {
+        const sel = list.querySelector('.cmdk-item.selected');
+        if (sel) { commands[+sel.dataset.i].action(); closeCmdk(); }
+      }
+    }
+  });
+  input.addEventListener('input', () => { selectedIdx = 0; renderList(input.value); });
+</script>
+
+</body>
+</html>
